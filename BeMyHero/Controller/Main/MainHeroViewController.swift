@@ -10,12 +10,19 @@ import UIKit
 
 class MainHeroViewController: UIViewController {
 
+    var heroes: [Hero]? {
+        didSet {
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HeroRequester().getHeroes { (result) in
             switch result {
             case .failure(let error): print("error: \(error)")
-            case .success(let data): print("Hero: \(data)")
+            case .success(let data):
+                self.heroes = data
             }
         }
     }
