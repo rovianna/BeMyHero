@@ -47,7 +47,7 @@ class MarvelRequesterData {
     }
     
     var enviroment: EnviromentData {
-        return EnviromentData(host: "https://gateway.marvel.com:443/v1/public", clientId: "ts=\(timeStamp)&apikey=\(publicAPI)&hash=\(hash)")
+        return EnviromentData(host: "https://gateway.marvel.com:443/v1/public", clientId: "?ts=\(timeStamp)&apikey=\(publicAPI)&hash=\(hash)")
     }
 }
 

@@ -30,6 +30,17 @@ class Hero {
         self.stories = stories
     }
     
+    init(withJSON json: JSON) {
+        identifier = json["id"].stringValue
+        name = json["name"].stringValue
+        description = json["description"].stringValue
+        thumbnail = "\(json["thumbnail"]["path"].stringValue).\(json["thumbnail"]["extension"].stringValue)"
+        resourceURI = json["resourceURI"].stringValue
+        comics = json["comics"].arrayValue.compactMap { Item.init(withJSON: $0) }
+        series = json["series"].arrayValue.compactMap { Item.init(withJSON: $0) }
+        stories = json["stories"].arrayValue.compactMap { Item.init(withJSON: $0) }
+    }
+    
 }
 
 
