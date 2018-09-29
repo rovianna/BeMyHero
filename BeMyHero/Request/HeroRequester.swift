@@ -6,4 +6,20 @@
 //  Copyright © 2018 Rodrigo Vianna. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Alamofire
+import SwiftyJSON
+
+class HeroRequester {
+    func getHeroes(completion: @escaping(Result<JSON>)-> Void) {
+        let path = "/characters?"
+        BaseRequester.shared.baseRequest(path: path, httpMethod: .get) { (response) in
+            switch response.result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                print(data)
+            }
+        }
+    }
+}

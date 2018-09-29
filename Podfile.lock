@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.7.3)
+  - CryptoSwift (0.12.0)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - CryptoSwift
+  - SwiftyJSON
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CryptoSwift
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  CryptoSwift: 1c07ca50843dd48bc54e6ea53d7a4dba3b645716
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 26da5bb1913bf0d2e7423c422da7066db464c150
+
+COCOAPODS: 1.5.3
