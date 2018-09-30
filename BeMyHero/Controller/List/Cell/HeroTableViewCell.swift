@@ -9,16 +9,14 @@
 import UIKit
 
 class HeroTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var heroImageView: UIImageView!
+    @IBOutlet weak var heroNameLabel: UILabel!
+    
+    
+    func configure(hero: Hero) {
+        heroImageView.downloadImage(from: hero.thumbnail)
+        heroNameLabel.text = hero.name
     }
     
 }
