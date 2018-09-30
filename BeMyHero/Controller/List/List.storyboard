@@ -35,9 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-SC-oWE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5DT-SC-oWE">
+                                <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hero" id="xaz-Ow-Fxs">
@@ -50,11 +49,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Busque um herói" translatesAutoresizingMaskIntoConstraints="NO" id="xzk-iD-fX8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5DT-SC-oWE" firstAttribute="bottom" secondItem="eh2-dr-sGx" secondAttribute="bottom" id="01q-e9-v7T"/>
+                            <constraint firstItem="xzk-iD-fX8" firstAttribute="top" secondItem="eh2-dr-sGx" secondAttribute="top" id="HUY-EF-2za"/>
+                            <constraint firstItem="xzk-iD-fX8" firstAttribute="leading" secondItem="eh2-dr-sGx" secondAttribute="leading" id="HeG-WO-dMX"/>
+                            <constraint firstItem="5DT-SC-oWE" firstAttribute="trailing" secondItem="eh2-dr-sGx" secondAttribute="trailing" id="K3w-NS-GRl"/>
+                            <constraint firstItem="5DT-SC-oWE" firstAttribute="leading" secondItem="eh2-dr-sGx" secondAttribute="leading" id="OGh-y1-x7t"/>
+                            <constraint firstItem="xzk-iD-fX8" firstAttribute="trailing" secondItem="eh2-dr-sGx" secondAttribute="trailing" id="fyA-dV-vqA"/>
+                            <constraint firstItem="5DT-SC-oWE" firstAttribute="top" secondItem="xzk-iD-fX8" secondAttribute="bottom" id="v7U-Oa-VCB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eh2-dr-sGx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nhK-q1-Z39"/>
+                    <navigationItem key="navigationItem" id="nhK-q1-Z39">
+                        <barButtonItem key="backBarButtonItem" title=" " id="tBr-uD-ZbA"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="heroesTableView" destination="5DT-SC-oWE" id="CgM-CQ-KlZ"/>
                     </connections>
@@ -62,6 +76,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5lo-X6-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-31.199999999999999" y="106.59670164917542"/>
+        </scene>
+        <!--Hero Detail View Controller-->
+        <scene sceneID="Q3H-cn-Jgn">
+            <objects>
+                <viewController storyboardIdentifier="detail" id="xHb-2M-GGC" customClass="HeroDetailViewController" customModule="BeMyHero" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ESr-aQ-sWY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6l-Wi-9wS" customClass="RoundedImage" customModule="BeMyHero" customModuleProvider="target">
+                                <rect key="frame" x="67" y="86" width="240" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="roundedCorners" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h5U-Fz-EUf">
+                                <rect key="frame" x="16" y="325" width="343" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bZf-BU-TR5"/>
+                    </view>
+                    <connections>
+                        <outlet property="heroDescriptionTextView" destination="h5U-Fz-EUf" id="Cr5-Pd-dCA"/>
+                        <outlet property="heroImageView" destination="p6l-Wi-9wS" id="teg-na-fBy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ag-1g-zaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765.60000000000002" y="106.59670164917542"/>
         </scene>
     </scenes>
 </document>

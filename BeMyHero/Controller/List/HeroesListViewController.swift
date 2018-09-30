@@ -50,6 +50,8 @@ class HeroesListViewController: UIViewController {
 
 extension HeroesListViewController: HeroesListDataSourceDelegate {
     func heroesListDataSourceDelegate(_ heroesListDataSource: HeroesListDataSource, didChoose hero: Hero) {
-        
+        let detail = HeroDetailViewController.instance
+        detail.hero = hero
+        show(detail, sender: nil)
     }
 }
