@@ -10,21 +10,46 @@ import UIKit
 
 class HeroesListViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var heroesTableView: UITableView!
+    
+    var heroes = [Hero]() {
+        didSet {
+            receiveHeroes(heroes)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    var source: HeroesListDataSource?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadHeroes()
     }
-    */
+    
+    func loadHeroes() {
+        HeroRequester().getHeroes { [weak self] (result) in
+            switch result {
+            case .failure(let error): print("error: \(error)")
+            case .success(let data):
+                guard let sSelf = self else { return }
+                sSelf.heroes = data
+            }
+        }
+    }
+    
+    func receiveHeroes(_ heroes: [Hero]) {
+        let source = HeroesListDataSource(tableView: heroesTableView, heroes: heroes)
+        applyDataSource(source: source)
+    }
+    
+    func applyDataSource(source: HeroesListDataSource) {
+        source.delegate = self
+        self.source = source
+        heroesTableView.reloadData()
+    }
+}
 
+extension HeroesListViewController: HeroesListDataSourceDelegate {
+    func heroesListDataSourceDelegate(_ heroesListDataSource: HeroesListDataSource, didChoose hero: Hero) {
+        
+    }
 }
