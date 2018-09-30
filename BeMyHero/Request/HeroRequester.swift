@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class HeroRequester {
     func getHeroes(completion: @escaping(Result<[Hero]>)-> Void) {
-        let path = "/characters"
+        let path = "/characters?"
         BaseRequester.shared.baseRequest(path: path, httpMethod: .get) { (response) in
             switch response.result {
             case .failure(let error):
@@ -20,6 +20,21 @@ class HeroRequester {
             case .success(let data):
                 let heroes = JSON(data)["data"]["results"].arrayValue.compactMap { Hero.init(withJSON: $0) }
                 completion(.success(heroes))
+            }
+        }
+    }
+    
+    func getHeroBy(name: String, completion: @escaping(Result<Hero>)-> Void) {
+        let path = "/characters?name=\(name)&"
+        BaseRequester.shared.baseRequest(path: path, httpMethod: .get) { (response) in
+            switch response.result {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                print("Data: \(data)")
+                let heroes = JSON(data)["data"]["results"].arrayValue.compactMap { Hero.init(withJSON: $0) }
+                guard let hero = heroes.first else { return }
+                completion(.success(hero))
             }
         }
     }
