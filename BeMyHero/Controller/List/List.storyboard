@@ -103,6 +103,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bZf-BU-TR5"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Qe4-sD-RfJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cNi-Ry-vMg">
+                            <connections>
+                                <action selector="favoriteHeroAction:" destination="xHb-2M-GGC" id="z61-rf-71S"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="heroDescriptionTextView" destination="h5U-Fz-EUf" id="Cr5-Pd-dCA"/>
                         <outlet property="heroImageView" destination="p6l-Wi-9wS" id="teg-na-fBy"/>
@@ -111,6 +118,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ag-1g-zaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765.60000000000002" y="106.59670164917542"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mat-Ja-DOP">
+            <objects>
+                <navigationController id="qPB-hk-nBa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dg9-fs-yuH">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xHb-2M-GGC" kind="relationship" relationship="rootViewController" id="IsB-hD-bQN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLu-Ge-Zh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="766" y="797"/>
         </scene>
     </scenes>
 </document>

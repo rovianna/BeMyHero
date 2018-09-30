@@ -27,4 +27,9 @@ class HeroDetailViewController: UIViewController {
         heroImageView.downloadImage(from: hero.thumbnail)
         heroDescriptionTextView.text = hero.description
     }
+    
+    @IBAction func favoriteHeroAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
 }

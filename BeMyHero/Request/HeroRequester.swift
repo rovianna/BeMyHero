@@ -31,7 +31,6 @@ class HeroRequester {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let data):
-                print("Data: \(data)")
                 let heroes = JSON(data)["data"]["results"].arrayValue.compactMap { Hero.init(withJSON: $0) }
                 guard let hero = heroes.first else { return }
                 completion(.success(hero))

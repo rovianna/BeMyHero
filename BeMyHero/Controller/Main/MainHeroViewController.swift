@@ -8,25 +8,25 @@
 
 import UIKit
 
-enum Random: String {
-    case dead = "deadpool"
-    case iron = "iron%20man"
-    case hulk = "hulk"
-    case wolverine = "wolverine"
-    case cyclops = "cyclops"
-    case jean = "jean%20grey"
-    case cable = "cable"
-}
-
-
 class MainHeroViewController: UIViewController {
+    
+    @IBOutlet weak var dailyHeroImageView: RoundedImage!
+    @IBOutlet weak var dailyHeroLabel: UILabel!
+    @IBOutlet weak var dailyHeroDescriptionLabel: UILabel!
+    
+    fileprivate let randomHero: [String] = ["deadpool", "iron%20man", "hulk", "wolverine", "cyclops", "jean%20grey", "cable"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HeroRequester().getHeroBy(name: "deadpool") { (result) in
+        
+        
+        HeroRequester().getHeroBy(name: randomHero.randomElement() ?? "deadpool") { (result) in
             switch result {
             case .failure(let error): print("\(error)")
-            case .success(let data): print("Hero: \(data)")
+            case .success(let hero):
+                self.dailyHeroImageView.downloadImage(from: hero.thumbnail)
+                self.dailyHeroLabel.text = hero.name
+                self.dailyHeroDescriptionLabel.text = hero.description
             }
         }
     }
