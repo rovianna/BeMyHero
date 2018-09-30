@@ -8,23 +8,26 @@
 
 import UIKit
 
-class MainHeroViewController: UIViewController {
+enum Random: String {
+    case dead = "deadpool"
+    case iron = "iron%20man"
+    case hulk = "hulk"
+    case wolverine = "wolverine"
+    case cyclops = "cyclops"
+    case jean = "jean%20grey"
+    case cable = "cable"
+}
 
-    var heroes: [Hero]? {
-        didSet {
-            
-        }
-    }
+
+class MainHeroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HeroRequester().getHeroes { (result) in
+        HeroRequester().getHeroBy(name: "deadpool") { (result) in
             switch result {
-            case .failure(let error): print("error: \(error)")
-            case .success(let data):
-                self.heroes = data
+            case .failure(let error): print("\(error)")
+            case .success(let data): print("Hero: \(data)")
             }
         }
     }
-
 }
